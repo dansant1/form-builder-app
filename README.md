@@ -81,7 +81,7 @@ This is an API for creating and managing forms, where users can create custom fo
 
   ```json
   {
-    "formName": "Example Form",
+    "name": "Example Form",
     "fields": [
       {
         "type": "text",
@@ -102,7 +102,7 @@ This is an API for creating and managing forms, where users can create custom fo
   ```json
   {
     "id": 1,
-    "formName": "Example Form",
+    "name": "Example Form",
     "fields": [
       {
         "type": "text",
@@ -124,7 +124,7 @@ This is an API for creating and managing forms, where users can create custom fo
   ```bash
   curl -X POST http://localhost:3000/api/forms \
     -H "Content-Type: application/json" \
-    -d '{"formName":"Example Form","fields":[{"type":"text","question":"What is your name?","required":true},{"type":"boolean","question":"Do you like ice cream?","required":false}]}'
+    -d '{"name":"Example Form","fields":[{"type":"text","question":"What is your name?","required":true},{"type":"boolean","question":"Do you like ice cream?","required":false}]}'
   ```
 
 ### 2. Get a Form by ID
@@ -136,7 +136,7 @@ This is an API for creating and managing forms, where users can create custom fo
   ```json
   {
     "id": 1,
-    "formName": "Example Form",
+    "name": "Example Form",
     "fields": [
       {
         "type": "text",
@@ -169,7 +169,7 @@ This is an API for creating and managing forms, where users can create custom fo
   [
     {
       "id": 1,
-      "formName": "Example Form",
+      "name": "Example Form",
       "fields": [
         {
           "type": "text",
