@@ -2,13 +2,19 @@
 
 ## Getting Started
 
-First, install the dependencies:
+first, go the frontend app
+
+```bash
+cd form-builder-app
+```
+
+Sencond, install the dependencies:
 
 ```bash
 npm install
 ```
 
-Second, run the development server:
+Third, run the development server:
 
 ```bash
 npm run dev
@@ -49,6 +55,12 @@ This is an API for creating and managing forms, where users can create custom fo
    - The database will run on port `5432` on your local machine.
 
 ## Environment Configuration
+
+first, go the backend app
+
+```bash
+cd form-builder-apis
+```
 
 1. Create a `.env` file in the root of the project with the following content:
 
