@@ -64,6 +64,13 @@ This is an API for creating and managing forms, where users can create custom fo
 
 4. run the command `npx prisma generate`
 
+5. run the server:
+
+```bash
+npm run dev
+```
+
+
 ## Ports
 
 - **API Port**: The API runs on port `3001` by default.

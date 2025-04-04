@@ -52,7 +52,6 @@ export class FormController {
       };
     
     listForms = async (_req: FastifyRequest, reply: FastifyReply) => {
-        console.log("REQUEST!!!");
         try {
             const useCase = new ListFormsUseCase(this._repository);
             const forms = await useCase.execute();

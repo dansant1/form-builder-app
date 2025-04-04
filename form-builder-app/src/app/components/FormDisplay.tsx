@@ -21,7 +21,8 @@ const FormDisplay: React.FC<{ formId: string }> = ({ formId }) => {
     const fetchForm = async () => {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forms/${formId}`);
       if (!response.ok) {
-        console.error('Error al obtener el formulario');
+        console.error('Unexpected Error');
+        alert('Error');
         return;
       }
       const data = await response.json();
@@ -39,7 +40,7 @@ const FormDisplay: React.FC<{ formId: string }> = ({ formId }) => {
       form?.fields.reduce((acc, field, index) => {
         if (field.type === 'text') {
           if (field.required) {
-            acc[index] = z.string().min(1, "Este campo es obligatorio");
+            acc[index] = z.string().min(1, "this field is required");
           } else {
             acc[index] = z.string().optional();
           }
@@ -51,7 +52,7 @@ const FormDisplay: React.FC<{ formId: string }> = ({ formId }) => {
           }
         } else if (field.type === 'datetime') {
           if (field.required) {
-            acc[index] = z.string().min(1, "Este campo es obligatorio");
+            acc[index] = z.string().min(1, "this field is required");
           } else {
             acc[index] = z.string().optional();
           }
@@ -90,7 +91,7 @@ const FormDisplay: React.FC<{ formId: string }> = ({ formId }) => {
     });
 
     if (!response.ok) {
-      console.error('Error al enviar el formulario');
+      console.error('Unexpected Error');
       setIsSubmitting(false);
       return;
     }

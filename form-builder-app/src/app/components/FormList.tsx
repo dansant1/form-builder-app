@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import LoadingSpinner from './loadingSpinner';
 
-const FormList: React.FC = () => {
-  const [forms, setForms] = useState<{ id: number; name: string }[]>([]);
+const FormList: React.FC = ({ forms, setForms }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -13,21 +12,19 @@ const FormList: React.FC = () => {
         const response = await fetch(`${backendUrl}/api/forms`);
         
         if (!response.ok) {
-          throw new Error('Error al obtener los formularios');
+          throw new Error('Unexpected Error');
         }
-
         const data = await response.json();
-        console.log('response.data=', data);
-        setForms(data);
+        setForms(data); 
       } catch (error) {
-        console.error('Error al obtener los formularios:', error);
+        console.error('Error', error);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchForms();
-  }, [forms]);
+  }, [setForms]);
 
   return (
     <div className="max-w-2xl mx-auto bg-green-50 p-6 rounded-xl shadow-sm border border-green-200">

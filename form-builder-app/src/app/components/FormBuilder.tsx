@@ -21,7 +21,7 @@ const formSchema = z.object({
   ).min(1, "It should have at least one field."),
 });
 
-const FormBuilder: React.FC = () => {
+const FormBuilder: React.FC = ({ addNewForm }) => {
   const [formName, setFormName] = useState('');
   const [fields, setFields] = useState<Field[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -53,8 +53,10 @@ const FormBuilder: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Error al guardar el formulario');
+        throw new Error('Unexpected Error');
       }
+      const savedForm = await response.json();
+      addNewForm(savedForm);  
     } catch (error) {
       console.error('Error', error);
     } finally {
