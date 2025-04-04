@@ -1,5 +1,9 @@
 import { FastifyInstance } from 'fastify';
-import { createForm, getFormById, listForms, saveFormData } from '../controllers/formController';
+import { FormController } from '../interfaces/http/form.controller';
+import { FormRepository } from '../infrastructure/repositories/form.repository';
+
+const repository = new FormRepository();
+const controller = FormController.create(repository);
 
 const formRoutes = async (fastify: FastifyInstance) => {
   fastify.post('/api/forms', {
@@ -23,7 +27,7 @@ const formRoutes = async (fastify: FastifyInstance) => {
         },
       },
     },
-    handler: createForm,
+    handler: controller.createForm,
   });
 
   fastify.get('/api/forms/:id', {
@@ -50,7 +54,7 @@ const formRoutes = async (fastify: FastifyInstance) => {
           },
         },
     },
-    handler: getFormById,
+    handler: controller.getFormById,
   });
 
   fastify.get('/api/forms', {
@@ -70,7 +74,7 @@ const formRoutes = async (fastify: FastifyInstance) => {
         },
       },
     },
-    handler: listForms,
+    handler: controller.listForms,
   });
 
     fastify.post('/api/forms/:id', {
@@ -104,7 +108,7 @@ const formRoutes = async (fastify: FastifyInstance) => {
           },
         },
       },
-      handler: saveFormData,
+      handler: controller.saveFormData,
     });
 };
 

@@ -14,7 +14,7 @@ app.register(cors, {
 const prisma = new PrismaClient();
 app.decorate('prisma', prisma);
 
-app.listen({ port: 3001}, (err, address) => {
+app.listen({ port: +(process.env.PORT as string)}, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
